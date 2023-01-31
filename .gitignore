@@ -1,2 +1,7 @@
 # Project exclude paths
-/target/
+/target/classes/
+/target/endorsed/
+/target/test-classes/
+/target/maven-archiver/
+/target/maven-status/
+/target/WSClient_Flight-1.0-SNAPSHOT
