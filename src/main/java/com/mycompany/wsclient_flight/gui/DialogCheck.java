@@ -2,6 +2,7 @@ package com.mycompany.wsclient_flight.gui;
 
 import com.mycompany.wsclient_flight.Reservation;
 import com.mycompany.wsclient_flight.client.SearchClient;
+import com.mycompany.wsclient_flight.object.ExtPlace;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
@@ -101,7 +102,7 @@ public class DialogCheck extends javax.swing.JDialog {
                     sb.append("Самолет: ").append(reservation.getFlight().getAircraft().getName()).append("\n");
                     sb.append("Дата вылета: ").append(reservation.getFlight().getDateDepart()).append("\n");
                     sb.append("Дата прилета: ").append(reservation.getFlight().getDateCome()).append("\n");
-                    sb.append("Место: ").append(reservation.getPlace()).append("\n");
+                    sb.append("Место: ").append(new ExtPlace(reservation.getPlace())).append("\n");
                     
                     message = sb.toString();
                 } else {
