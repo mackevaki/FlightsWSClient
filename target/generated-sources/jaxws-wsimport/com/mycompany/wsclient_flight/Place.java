@@ -1,9 +1,8 @@
 
-package com.mycompany.flights.interfaces.impls;
+package com.mycompany.wsclient_flight;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -18,9 +17,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="busy" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="flightClass" type="{http://impls.interfaces.flights.mycompany.com/}flightClass" minOccurs="0"/>
+ *         &lt;element name="flightClass" type="{http://ws.flights.mycompany.com/}flightClass" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="seatLetter" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/>
+ *         &lt;element name="seatLetter" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="seatNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -43,8 +42,7 @@ public class Place {
     protected boolean busy;
     protected FlightClass flightClass;
     protected long id;
-    @XmlSchemaType(name = "unsignedShort")
-    protected int seatLetter;
+    protected String seatLetter;
     protected int seatNumber;
 
     /**
@@ -106,16 +104,24 @@ public class Place {
     /**
      * Gets the value of the seatLetter property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getSeatLetter() {
+    public String getSeatLetter() {
         return seatLetter;
     }
 
     /**
      * Sets the value of the seatLetter property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setSeatLetter(int value) {
+    public void setSeatLetter(String value) {
         this.seatLetter = value;
     }
 

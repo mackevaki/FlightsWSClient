@@ -1,5 +1,5 @@
 
-package com.mycompany.flights.interfaces.impls;
+package com.mycompany.wsclient_flight;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -16,9 +16,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="cityFrom" type="{http://impls.interfaces.flights.mycompany.com/}city" minOccurs="0"/>
- *         &lt;element name="cityTo" type="{http://impls.interfaces.flights.mycompany.com/}city" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="arg1" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
+ *         &lt;element name="arg2" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,78 +29,78 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "searchFlight", propOrder = {
-    "date",
-    "cityFrom",
-    "cityTo"
+    "arg0",
+    "arg1",
+    "arg2"
 })
 public class SearchFlight {
 
-    protected long date;
-    protected City cityFrom;
-    protected City cityTo;
+    protected long arg0;
+    protected City arg1;
+    protected City arg2;
 
     /**
-     * Gets the value of the date property.
+     * Gets the value of the arg0 property.
      * 
      */
-    public long getDate() {
-        return date;
+    public long getArg0() {
+        return arg0;
     }
 
     /**
-     * Sets the value of the date property.
+     * Sets the value of the arg0 property.
      * 
      */
-    public void setDate(long value) {
-        this.date = value;
+    public void setArg0(long value) {
+        this.arg0 = value;
     }
 
     /**
-     * Gets the value of the cityFrom property.
+     * Gets the value of the arg1 property.
      * 
      * @return
      *     possible object is
      *     {@link City }
      *     
      */
-    public City getCityFrom() {
-        return cityFrom;
+    public City getArg1() {
+        return arg1;
     }
 
     /**
-     * Sets the value of the cityFrom property.
+     * Sets the value of the arg1 property.
      * 
      * @param value
      *     allowed object is
      *     {@link City }
      *     
      */
-    public void setCityFrom(City value) {
-        this.cityFrom = value;
+    public void setArg1(City value) {
+        this.arg1 = value;
     }
 
     /**
-     * Gets the value of the cityTo property.
+     * Gets the value of the arg2 property.
      * 
      * @return
      *     possible object is
      *     {@link City }
      *     
      */
-    public City getCityTo() {
-        return cityTo;
+    public City getArg2() {
+        return arg2;
     }
 
     /**
-     * Sets the value of the cityTo property.
+     * Sets the value of the arg2 property.
      * 
      * @param value
      *     allowed object is
      *     {@link City }
      *     
      */
-    public void setCityTo(City value) {
-        this.cityTo = value;
+    public void setArg2(City value) {
+        this.arg2 = value;
     }
 
 }

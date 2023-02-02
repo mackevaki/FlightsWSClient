@@ -1,9 +1,13 @@
 package com.mycompany.wsclient_flight.client;
 
-import com.mycompany.flights.interfaces.impls.City;
-import com.mycompany.flights.interfaces.impls.Flight;
-import com.mycompany.flights.interfaces.impls.FlightService;
-import com.mycompany.flights.interfaces.impls.SearchImpl;
+import com.mycompany.wsclient_flight.City;
+import com.mycompany.wsclient_flight.Flight;
+import com.mycompany.wsclient_flight.Passenger;
+import com.mycompany.wsclient_flight.Place;
+import com.mycompany.wsclient_flight.Reservation;
+import com.mycompany.wsclient_flight.SearchWS;
+import com.mycompany.wsclient_flight.SearchWS_Service;
+import com.mycompany.wsclient_flight.object.ExtCity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,8 +16,8 @@ public class SearchClient {
     private static SearchClient searchClient;
     
     private SearchClient() {
-        searchService = new FlightService();
-        searchWS = searchService.getSearchImplPort();
+        searchService = new SearchWS_Service();
+        searchWS = searchService.getSearchWSPort();
     }
     
     public static SearchClient getInstance() {
@@ -24,15 +28,15 @@ public class SearchClient {
         return searchClient;
     }
     
-    private final FlightService searchService;
-    private final SearchImpl searchWS;
+    private final SearchWS_Service searchService;
+    private final SearchWS searchWS;
     
     
-    public ArrayList<City> getAllCities() {
-        ArrayList<City> cityList = new ArrayList<>();
+    public ArrayList<ExtCity> getAllCities() {
+        ArrayList<ExtCity> cityList = new ArrayList<>();
         
         for (City city : searchWS.getAllCities()) {
-            City extCity = new City();
+            ExtCity extCity = new ExtCity();
             extCity.setCode(city.getCode());
             extCity.setCountry(city.getCountry());
             extCity.setDesc(city.getDesc());
@@ -52,4 +56,11 @@ public class SearchClient {
         return flightList;
     }
 
+    public boolean buyTicket(Flight flight, Place place, Passenger passenger, String addInfo) {
+        return searchWS.buyTicket(flight, place, passenger, addInfo);
+    }
+    
+    public Reservation checkReservationByCode(String code) {
+        return searchWS.checkReservationByCode(code);
+    }
 }

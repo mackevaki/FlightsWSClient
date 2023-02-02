@@ -1,5 +1,5 @@
 
-package com.mycompany.flights.interfaces.impls;
+package com.mycompany.wsclient_flight;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

@@ -40,6 +40,8 @@
                     <compilerArgs>
                         <args>-Djava.endorsed.dirs=${endorsed.dir}</args>
                     </compilerArgs>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -110,16 +112,16 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/Flights/FlightService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/SearchWS.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName></packageName>
+                            <packageName>com.mycompany.wsclient_flight</packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:8080/Flights/FlightService?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/FlightService.stale</staleFile>
+                            <wsdlLocation>http://localhost:8080/SearchWS?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/SearchWS.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-FlightService</id>
+                        <id>wsimport-generate-SearchWS</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
@@ -162,6 +164,21 @@
           <artifactId>runtime</artifactId>
           <version>2.3.2</version>
           <scope>runtime</scope>
+        </dependency>
+<!--        <dependency>
+            <groupId>jgoodies</groupId>
+            <artifactId>looks</artifactId>
+            <version>1.2.2</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.jgoodies</groupId>
+            <artifactId>jgoodies-common</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jgoodies</groupId>
+            <artifactId>jgoodies-looks</artifactId>
+            <version>2.7.0</version>
         </dependency>
     </dependencies>
 

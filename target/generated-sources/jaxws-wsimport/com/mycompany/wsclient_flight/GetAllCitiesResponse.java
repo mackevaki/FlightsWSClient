@@ -1,5 +1,5 @@
 
-package com.mycompany.flights.interfaces.impls;
+package com.mycompany.wsclient_flight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://impls.interfaces.flights.mycompany.com/}city" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ws.flights.mycompany.com/}city" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

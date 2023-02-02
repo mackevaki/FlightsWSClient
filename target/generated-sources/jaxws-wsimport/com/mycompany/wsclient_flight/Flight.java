@@ -1,5 +1,5 @@
 
-package com.mycompany.flights.interfaces.impls;
+package com.mycompany.wsclient_flight;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,9 +18,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="aircraft" type="{http://impls.interfaces.flights.mycompany.com/}aircraft" minOccurs="0"/>
- *         &lt;element name="cityFrom" type="{http://impls.interfaces.flights.mycompany.com/}city" minOccurs="0"/>
- *         &lt;element name="cityTo" type="{http://impls.interfaces.flights.mycompany.com/}city" minOccurs="0"/>
+ *         &lt;element name="aircraft" type="{http://ws.flights.mycompany.com/}aircraft" minOccurs="0"/>
+ *         &lt;element name="cityFrom" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
+ *         &lt;element name="cityTo" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
  *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dateCome" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="dateDepart" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
