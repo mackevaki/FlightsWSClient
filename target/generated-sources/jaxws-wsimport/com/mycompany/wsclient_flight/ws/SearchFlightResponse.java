@@ -1,5 +1,5 @@
 
-package com.mycompany.wsclient_flight;
+package com.mycompany.wsclient_flight.ws;
 
 import java.util.ArrayList;
 import java.util.List;

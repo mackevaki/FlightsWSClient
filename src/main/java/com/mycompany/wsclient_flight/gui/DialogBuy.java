@@ -1,8 +1,8 @@
 package com.mycompany.wsclient_flight.gui;
 
-import com.mycompany.wsclient_flight.Flight;
-import com.mycompany.wsclient_flight.Passenger;
-import com.mycompany.wsclient_flight.Place;
+import com.mycompany.wsclient_flight.ws.Flight;
+import com.mycompany.wsclient_flight.ws.Passenger;
+import com.mycompany.wsclient_flight.ws.Place;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.models.BoxModel;
 import com.mycompany.wsclient_flight.object.ExtPlace;

@@ -1,13 +1,13 @@
 package com.mycompany.wsclient_flight.client;
 
-import com.mycompany.wsclient_flight.City;
-import com.mycompany.wsclient_flight.Flight;
-import com.mycompany.wsclient_flight.Passenger;
-import com.mycompany.wsclient_flight.Place;
-import com.mycompany.wsclient_flight.Reservation;
-import com.mycompany.wsclient_flight.SearchWS;
-import com.mycompany.wsclient_flight.SearchWS_Service;
+import com.mycompany.wsclient_flight.ws.City;
+import com.mycompany.wsclient_flight.ws.Flight;
+import com.mycompany.wsclient_flight.ws.Passenger;
+import com.mycompany.wsclient_flight.ws.Place;
+import com.mycompany.wsclient_flight.ws.Reservation;
 import com.mycompany.wsclient_flight.object.ExtCity;
+import com.mycompany.wsclient_flight.ws.FlightWS;
+import com.mycompany.wsclient_flight.ws.FlightWS_Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,8 +16,8 @@ public class SearchClient {
     private static SearchClient searchClient;
     
     private SearchClient() {
-        searchService = new SearchWS_Service();
-        searchWS = searchService.getSearchWSPort();
+        searchService = new FlightWS_Service();
+        searchWS = searchService.getFlightWSPort();
     }
     
     public static SearchClient getInstance() {
@@ -28,8 +28,8 @@ public class SearchClient {
         return searchClient;
     }
     
-    private final SearchWS_Service searchService;
-    private final SearchWS searchWS;
+    private final FlightWS_Service searchService;
+    private final FlightWS searchWS;
     
     
     public ArrayList<ExtCity> getAllCities() {

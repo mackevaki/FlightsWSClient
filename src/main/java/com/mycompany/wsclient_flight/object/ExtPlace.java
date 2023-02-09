@@ -1,6 +1,6 @@
 package com.mycompany.wsclient_flight.object;
 
-import com.mycompany.wsclient_flight.Place;
+import com.mycompany.wsclient_flight.ws.Place;
 
 public class ExtPlace extends Place {
 

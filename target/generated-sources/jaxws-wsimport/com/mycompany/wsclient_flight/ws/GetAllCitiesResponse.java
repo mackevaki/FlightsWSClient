@@ -1,5 +1,5 @@
 
-package com.mycompany.wsclient_flight;
+package com.mycompany.wsclient_flight.ws;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchFlightResponse complex type.
+ * <p>Java class for getAllCitiesResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="searchFlightResponse">
+ * &lt;complexType name="getAllCitiesResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://ws.flights.mycompany.com/}flight" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ws.flights.mycompany.com/}city" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "searchFlightResponse", propOrder = {
+@XmlType(name = "getAllCitiesResponse", propOrder = {
     "_return"
 })
-public class SearchFlightResponse {
+public class GetAllCitiesResponse {
 
     @XmlElement(name = "return")
-    protected List<Flight> _return;
+    protected List<City> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class SearchFlightResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Flight }
+     * {@link City }
      * 
      * 
      */
-    public List<Flight> getReturn() {
+    public List<City> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<Flight>();
+            _return = new ArrayList<City>();
         }
         return this._return;
     }

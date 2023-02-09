@@ -1,5 +1,5 @@
 
-package com.mycompany.wsclient_flight;
+package com.mycompany.wsclient_flight.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,15 +7,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for company complex type.
+ * <p>Java class for city complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="company">
+ * &lt;complexType name="city">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="country" type="{http://ws.flights.mycompany.com/}country" minOccurs="0"/>
  *         &lt;element name="desc" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -28,16 +30,68 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "company", propOrder = {
+@XmlType(name = "city", propOrder = {
+    "code",
+    "country",
     "desc",
     "id",
     "name"
 })
-public class Company {
+public class City {
 
+    protected String code;
+    protected Country country;
     protected String desc;
     protected long id;
     protected String name;
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    /**
+     * Gets the value of the country property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Country }
+     *     
+     */
+    public Country getCountry() {
+        return country;
+    }
+
+    /**
+     * Sets the value of the country property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Country }
+     *     
+     */
+    public void setCountry(Country value) {
+        this.country = value;
+    }
 
     /**
      * Gets the value of the desc property.

@@ -1,8 +1,8 @@
 package com.mycompany.wsclient_flight.models;
 
 
-import com.mycompany.wsclient_flight.Flight;
-import com.mycompany.wsclient_flight.Place;
+import com.mycompany.wsclient_flight.ws.Flight;
+import com.mycompany.wsclient_flight.ws.Place;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;

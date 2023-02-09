@@ -1,5 +1,5 @@
 
-package com.mycompany.wsclient_flight;
+package com.mycompany.wsclient_flight.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,16 +7,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for company complex type.
+ * <p>Java class for country complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="company">
+ * &lt;complexType name="country">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="desc" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="flag" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -28,16 +30,44 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "company", propOrder = {
+@XmlType(name = "country", propOrder = {
+    "code",
     "desc",
+    "flag",
     "id",
     "name"
 })
-public class Company {
+public class Country {
 
+    protected String code;
     protected String desc;
+    protected byte[] flag;
     protected long id;
     protected String name;
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
 
     /**
      * Gets the value of the desc property.
@@ -61,6 +91,28 @@ public class Company {
      */
     public void setDesc(String value) {
         this.desc = value;
+    }
+
+    /**
+     * Gets the value of the flag property.
+     * 
+     * @return
+     *     possible object is
+     *     byte[]
+     */
+    public byte[] getFlag() {
+        return flag;
+    }
+
+    /**
+     * Sets the value of the flag property.
+     * 
+     * @param value
+     *     allowed object is
+     *     byte[]
+     */
+    public void setFlag(byte[] value) {
+        this.flag = value;
     }
 
     /**

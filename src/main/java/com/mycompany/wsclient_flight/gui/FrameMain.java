@@ -1,8 +1,8 @@
 package com.mycompany.wsclient_flight.gui;
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
-import com.mycompany.wsclient_flight.City;
-import com.mycompany.wsclient_flight.Flight;
+import com.mycompany.wsclient_flight.ws.City;
+import com.mycompany.wsclient_flight.ws.Flight;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.models.BoxModel;
 import com.mycompany.wsclient_flight.models.FlightModel;

@@ -1,5 +1,5 @@
 
-package com.mycompany.wsclient_flight;
+package com.mycompany.wsclient_flight.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for company complex type.
+ * <p>Java class for flightClass complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="company">
+ * &lt;complexType name="flightClass">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -28,12 +28,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "company", propOrder = {
+@XmlType(name = "flightClass", propOrder = {
     "desc",
     "id",
     "name"
 })
-public class Company {
+public class FlightClass {
 
     protected String desc;
     protected long id;

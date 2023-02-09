@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/SearchWS?wsdl" uri="wsdl/localhost_8080/SearchWS.wsdl"/>
     <system systemId="http://localhost:8080/SearchWS?xsd=1" uri="wsdl/localhost_8080/SearchWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/FlightWS?wsdl" uri="wsdl/localhost_8080/FlightWS.wsdl"/>
+    <system systemId="http://localhost:8080/FlightWS?xsd=1" uri="wsdl/localhost_8080/FlightWS.xsd_1.xsd"/>
 </catalog>

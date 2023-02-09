@@ -3,12 +3,13 @@ package com.mycompany.wsclient_flight;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.jws.HandlerChain;
 import javax.xml.namespace.QName;
-import jakarta.xml.ws.Service;
-import jakarta.xml.ws.WebEndpoint;
-import jakarta.xml.ws.WebServiceClient;
-import jakarta.xml.ws.WebServiceException;
-import jakarta.xml.ws.WebServiceFeature;
+import javax.xml.ws.Service;
+import javax.xml.ws.WebEndpoint;
+import javax.xml.ws.WebServiceClient;
+import javax.xml.ws.WebServiceException;
+import javax.xml.ws.WebServiceFeature;
 
 
 /**
@@ -18,6 +19,7 @@ import jakarta.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "SearchWS", targetNamespace = "http://ws.flights.mycompany.com/", wsdlLocation = "http://localhost:8080/SearchWS?wsdl")
+@HandlerChain(file = "SearchWS_Service_handler.xml")
 public class SearchWS_Service
     extends Service
 {
@@ -75,7 +77,7 @@ public class SearchWS_Service
     /**
      * 
      * @param features
-     *     A list of {@link jakarta.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
+     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
      *     returns SearchWS
      */

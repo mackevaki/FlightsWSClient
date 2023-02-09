@@ -120,8 +120,30 @@
                             </vmArgs>
                             <wsdlLocation>http://localhost:8080/SearchWS?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/SearchWS.stale</staleFile>
+                            <bindingDirectory>${basedir}/src/jaxws-bindings</bindingDirectory>
+                            <bindingFiles>
+                                <bindingFile>SearchWS_handler.xml</bindingFile>
+                            </bindingFiles>
                         </configuration>
                         <id>wsimport-generate-SearchWS</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/FlightWS.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>com.mycompany.wsclient_flight.ws</packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:8080/FlightWS?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/FlightWS.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-FlightWS</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
@@ -151,25 +173,25 @@
             <groupId>org.glassfish.metro</groupId>
             <artifactId>webservices-rt</artifactId>
             <version>4.0.1</version>
-<!--            <scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>jakarta.xml.ws</groupId>
           <artifactId>jakarta.xml.ws-api</artifactId>
-          <version>4.0.0</version>
+          <version>2.3.3</version>
+            <type>jar</type>
         </dependency>
-
+        <dependency>
+            <groupId>com.sun.org.apache.xml.internal</groupId>
+            <artifactId>resolver</artifactId>
+            <version>20050927</version>
+        </dependency>
         <dependency>
           <groupId>com.sun.xml.ws</groupId>
           <artifactId>runtime</artifactId>
           <version>2.3.2</version>
           <scope>runtime</scope>
         </dependency>
-<!--        <dependency>
-            <groupId>jgoodies</groupId>
-            <artifactId>looks</artifactId>
-            <version>1.2.2</version>
-        </dependency>-->
         <dependency>
             <groupId>com.jgoodies</groupId>
             <artifactId>jgoodies-common</artifactId>
@@ -179,6 +201,12 @@
             <groupId>com.jgoodies</groupId>
             <artifactId>jgoodies-looks</artifactId>
             <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.jws</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
+            <version>2.1.0</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 

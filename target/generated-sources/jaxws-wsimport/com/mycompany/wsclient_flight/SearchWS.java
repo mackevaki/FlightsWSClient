@@ -2,14 +2,15 @@
 package com.mycompany.wsclient_flight;
 
 import java.util.List;
-import jakarta.jws.WebMethod;
-import jakarta.jws.WebParam;
-import jakarta.jws.WebResult;
-import jakarta.jws.WebService;
-import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.ws.Action;
-import jakarta.xml.ws.RequestWrapper;
-import jakarta.xml.ws.ResponseWrapper;
+import javax.jws.HandlerChain;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
+import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.ws.Action;
+import javax.xml.ws.RequestWrapper;
+import javax.xml.ws.ResponseWrapper;
 
 
 /**
@@ -19,6 +20,7 @@ import jakarta.xml.ws.ResponseWrapper;
  * 
  */
 @WebService(name = "SearchWS", targetNamespace = "http://ws.flights.mycompany.com/")
+@HandlerChain(file = "SearchWS_handler.xml")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -27,18 +29,15 @@ public interface SearchWS {
 
     /**
      * 
-     * @param arg0
      * @return
-     *     returns com.mycompany.wsclient_flight.Reservation
+     *     returns java.util.List<com.mycompany.wsclient_flight.City>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkReservationByCode", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.CheckReservationByCode")
-    @ResponseWrapper(localName = "checkReservationByCodeResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.CheckReservationByCodeResponse")
-    @Action(input = "http://ws.flights.mycompany.com/SearchWS/checkReservationByCodeRequest", output = "http://ws.flights.mycompany.com/SearchWS/checkReservationByCodeResponse")
-    public Reservation checkReservationByCode(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+    @RequestWrapper(localName = "getAllCities", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.GetAllCities")
+    @ResponseWrapper(localName = "getAllCitiesResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.GetAllCitiesResponse")
+    @Action(input = "http://ws.flights.mycompany.com/SearchWS/getAllCitiesRequest", output = "http://ws.flights.mycompany.com/SearchWS/getAllCitiesResponse")
+    public List<City> getAllCities();
 
     /**
      * 
@@ -66,18 +65,6 @@ public interface SearchWS {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<com.mycompany.wsclient_flight.City>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllCities", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.GetAllCities")
-    @ResponseWrapper(localName = "getAllCitiesResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.GetAllCitiesResponse")
-    @Action(input = "http://ws.flights.mycompany.com/SearchWS/getAllCitiesRequest", output = "http://ws.flights.mycompany.com/SearchWS/getAllCitiesResponse")
-    public List<City> getAllCities();
-
-    /**
-     * 
      * @param arg2
      * @param arg1
      * @param arg0
@@ -96,5 +83,20 @@ public interface SearchWS {
         City arg1,
         @WebParam(name = "arg2", targetNamespace = "")
         City arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.mycompany.wsclient_flight.Reservation
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkReservationByCode", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.CheckReservationByCode")
+    @ResponseWrapper(localName = "checkReservationByCodeResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.CheckReservationByCodeResponse")
+    @Action(input = "http://ws.flights.mycompany.com/SearchWS/checkReservationByCodeRequest", output = "http://ws.flights.mycompany.com/SearchWS/checkReservationByCodeResponse")
+    public Reservation checkReservationByCode(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
 }

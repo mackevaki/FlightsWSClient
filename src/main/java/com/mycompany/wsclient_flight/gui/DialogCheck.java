@@ -1,6 +1,6 @@
 package com.mycompany.wsclient_flight.gui;
 
-import com.mycompany.wsclient_flight.Reservation;
+import com.mycompany.wsclient_flight.ws.Reservation;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.object.ExtPlace;
 import javax.swing.JOptionPane;
