@@ -8,6 +8,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -45,12 +46,15 @@ public interface FlightWS {
      * @param arg0
      * @return
      *     returns boolean
+     * @throws ArgumentException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "buyTicket", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.BuyTicket")
     @ResponseWrapper(localName = "buyTicketResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.BuyTicketResponse")
-    @Action(input = "http://ws.flights.mycompany.com/FlightWS/buyTicketRequest", output = "http://ws.flights.mycompany.com/FlightWS/buyTicketResponse")
+    @Action(input = "http://ws.flights.mycompany.com/FlightWS/buyTicketRequest", output = "http://ws.flights.mycompany.com/FlightWS/buyTicketResponse", fault = {
+        @FaultAction(className = ArgumentException_Exception.class, value = "http://ws.flights.mycompany.com/FlightWS/buyTicket/Fault/ArgumentException")
+    })
     public boolean buyTicket(
         @WebParam(name = "arg0", targetNamespace = "")
         Flight arg0,
@@ -59,7 +63,9 @@ public interface FlightWS {
         @WebParam(name = "arg2", targetNamespace = "")
         Passenger arg2,
         @WebParam(name = "arg3", targetNamespace = "")
-        String arg3);
+        String arg3)
+        throws ArgumentException_Exception
+    ;
 
     /**
      * 
@@ -68,33 +74,43 @@ public interface FlightWS {
      * @param arg0
      * @return
      *     returns java.util.List<com.mycompany.wsclient_flight.ws.Flight>
+     * @throws ArgumentException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "searchFlight", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlight")
     @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlightResponse")
-    @Action(input = "http://ws.flights.mycompany.com/FlightWS/searchFlightRequest", output = "http://ws.flights.mycompany.com/FlightWS/searchFlightResponse")
+    @Action(input = "http://ws.flights.mycompany.com/FlightWS/searchFlightRequest", output = "http://ws.flights.mycompany.com/FlightWS/searchFlightResponse", fault = {
+        @FaultAction(className = ArgumentException_Exception.class, value = "http://ws.flights.mycompany.com/FlightWS/searchFlight/Fault/ArgumentException")
+    })
     public List<Flight> searchFlight(
         @WebParam(name = "arg0", targetNamespace = "")
-        long arg0,
+        Long arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         City arg1,
         @WebParam(name = "arg2", targetNamespace = "")
-        City arg2);
+        City arg2)
+        throws ArgumentException_Exception
+    ;
 
     /**
      * 
      * @param arg0
      * @return
      *     returns com.mycompany.wsclient_flight.ws.Reservation
+     * @throws ArgumentException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "checkReservationByCode", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.CheckReservationByCode")
     @ResponseWrapper(localName = "checkReservationByCodeResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.CheckReservationByCodeResponse")
-    @Action(input = "http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeRequest", output = "http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeResponse")
+    @Action(input = "http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeRequest", output = "http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeResponse", fault = {
+        @FaultAction(className = ArgumentException_Exception.class, value = "http://ws.flights.mycompany.com/FlightWS/checkReservationByCode/Fault/ArgumentException")
+    })
     public Reservation checkReservationByCode(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        String arg0)
+        throws ArgumentException_Exception
+    ;
 
 }

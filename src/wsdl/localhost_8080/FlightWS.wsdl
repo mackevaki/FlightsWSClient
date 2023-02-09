@@ -19,6 +19,9 @@
 <message name="buyTicketResponse">
 <part name="parameters" element="tns:buyTicketResponse"/>
 </message>
+<message name="ArgumentException">
+<part name="fault" element="tns:ArgumentException"/>
+</message>
 <message name="searchFlight">
 <part name="parameters" element="tns:searchFlight"/>
 </message>
@@ -39,14 +42,17 @@
 <operation name="buyTicket">
 <input wsam:Action="http://ws.flights.mycompany.com/FlightWS/buyTicketRequest" message="tns:buyTicket"/>
 <output wsam:Action="http://ws.flights.mycompany.com/FlightWS/buyTicketResponse" message="tns:buyTicketResponse"/>
+<fault message="tns:ArgumentException" name="ArgumentException" wsam:Action="http://ws.flights.mycompany.com/FlightWS/buyTicket/Fault/ArgumentException"/>
 </operation>
 <operation name="searchFlight">
 <input wsam:Action="http://ws.flights.mycompany.com/FlightWS/searchFlightRequest" message="tns:searchFlight"/>
 <output wsam:Action="http://ws.flights.mycompany.com/FlightWS/searchFlightResponse" message="tns:searchFlightResponse"/>
+<fault message="tns:ArgumentException" name="ArgumentException" wsam:Action="http://ws.flights.mycompany.com/FlightWS/searchFlight/Fault/ArgumentException"/>
 </operation>
 <operation name="checkReservationByCode">
 <input wsam:Action="http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeRequest" message="tns:checkReservationByCode"/>
 <output wsam:Action="http://ws.flights.mycompany.com/FlightWS/checkReservationByCodeResponse" message="tns:checkReservationByCodeResponse"/>
+<fault message="tns:ArgumentException" name="ArgumentException" wsam:Action="http://ws.flights.mycompany.com/FlightWS/checkReservationByCode/Fault/ArgumentException"/>
 </operation>
 </portType>
 <binding name="FlightWSPortBinding" type="tns:FlightWS">
@@ -67,6 +73,9 @@
 <output>
 <soap12:body use="literal"/>
 </output>
+<fault name="ArgumentException">
+<soap12:fault name="ArgumentException" use="literal"/>
+</fault>
 </operation>
 <operation name="searchFlight">
 <input>
@@ -75,6 +84,9 @@
 <output>
 <soap12:body use="literal"/>
 </output>
+<fault name="ArgumentException">
+<soap12:fault name="ArgumentException" use="literal"/>
+</fault>
 </operation>
 <operation name="checkReservationByCode">
 <input>
@@ -83,6 +95,9 @@
 <output>
 <soap12:body use="literal"/>
 </output>
+<fault name="ArgumentException">
+<soap12:fault name="ArgumentException" use="literal"/>
+</fault>
 </operation>
 </binding>
 <service name="FlightWS">

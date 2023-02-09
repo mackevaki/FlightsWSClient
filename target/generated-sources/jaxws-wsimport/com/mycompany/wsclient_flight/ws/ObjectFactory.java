@@ -26,6 +26,7 @@ public class ObjectFactory {
 
     private final static QName _GetAllCitiesResponse_QNAME = new QName("http://ws.flights.mycompany.com/", "getAllCitiesResponse");
     private final static QName _SearchFlight_QNAME = new QName("http://ws.flights.mycompany.com/", "searchFlight");
+    private final static QName _ArgumentException_QNAME = new QName("http://ws.flights.mycompany.com/", "ArgumentException");
     private final static QName _GetAllCities_QNAME = new QName("http://ws.flights.mycompany.com/", "getAllCities");
     private final static QName _BuyTicket_QNAME = new QName("http://ws.flights.mycompany.com/", "buyTicket");
     private final static QName _CheckReservationByCode_QNAME = new QName("http://ws.flights.mycompany.com/", "checkReservationByCode");
@@ -86,6 +87,14 @@ public class ObjectFactory {
      */
     public GetAllCities createGetAllCities() {
         return new GetAllCities();
+    }
+
+    /**
+     * Create an instance of {@link ArgumentException }
+     * 
+     */
+    public ArgumentException createArgumentException() {
+        return new ArgumentException();
     }
 
     /**
@@ -192,6 +201,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.flights.mycompany.com/", name = "searchFlight")
     public JAXBElement<SearchFlight> createSearchFlight(SearchFlight value) {
         return new JAXBElement<SearchFlight>(_SearchFlight_QNAME, SearchFlight.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArgumentException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.flights.mycompany.com/", name = "ArgumentException")
+    public JAXBElement<ArgumentException> createArgumentException(ArgumentException value) {
+        return new JAXBElement<ArgumentException>(_ArgumentException_QNAME, ArgumentException.class, null, value);
     }
 
     /**

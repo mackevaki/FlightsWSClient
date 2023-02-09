@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is Eclipse Metro/4.0.1 (RELEASE-4.0.1-18da659; 2022-07-02T08:47:18+0000) XMLWS-Impl/4.0.0 XMLWS-API/${jaxws-api.version} XMLB-Impl/4.0.0 XMLB-API/4.0.0 git-revision#18da659. --><xs:schema xmlns:tns="http://ws.flights.mycompany.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.flights.mycompany.com/">
 
+<xs:element name="ArgumentException" type="tns:ArgumentException"/>
+
 <xs:element name="buyTicket" type="tns:buyTicket"/>
 
 <xs:element name="buyTicketResponse" type="tns:buyTicketResponse"/>
@@ -123,9 +125,15 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="ArgumentException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="searchFlight">
 <xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
+<xs:element name="arg0" type="xs:long" minOccurs="0"/>
 <xs:element name="arg1" type="tns:city" minOccurs="0"/>
 <xs:element name="arg2" type="tns:city" minOccurs="0"/>
 </xs:sequence>
