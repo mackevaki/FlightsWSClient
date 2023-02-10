@@ -3,7 +3,10 @@ package com.mycompany.wsclient_flight.gui;
 import com.mycompany.wsclient_flight.ws.Reservation;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.object.ExtPlace;
-import javax.swing.JOptionPane;
+import com.mycompany.wsclient_flight.utils.MessageManager;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 
 public class DialogCheck extends javax.swing.JDialog {
@@ -109,10 +112,7 @@ public class DialogCheck extends javax.swing.JDialog {
                     message = "Ничего не найдено";
                 }
 
-                JOptionPane.showMessageDialog(DialogCheck.this,
-                        message,
-                         "Результаты поиска",
-                        JOptionPane.PLAIN_MESSAGE);
+                MessageManager.showInformMessage(rootPane, message, "Результаты поиска");
 
                 return null;
             }
@@ -120,6 +120,14 @@ public class DialogCheck extends javax.swing.JDialog {
             @Override
             protected void done() {
                 showBusy(false);
+                try {
+                    get();
+                } catch (InterruptedException ex){
+                    Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    MessageManager.showErrorMessage(rootPane, ex.getCause().getMessage(), "Ошибка");
+                    Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }.execute();
     }//GEN-LAST:event_btnCheckActionPerformed

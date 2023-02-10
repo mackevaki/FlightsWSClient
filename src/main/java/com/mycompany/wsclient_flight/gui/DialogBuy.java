@@ -6,7 +6,11 @@ import com.mycompany.wsclient_flight.ws.Place;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.models.BoxModel;
 import com.mycompany.wsclient_flight.object.ExtPlace;
+import com.mycompany.wsclient_flight.utils.MessageManager;
+import com.mycompany.wsclient_flight.ws.ArgumentException_Exception;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DialogBuy extends javax.swing.JDialog {
     private Flight flight;
@@ -202,20 +206,25 @@ public class DialogBuy extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        Passenger passenger = new Passenger();
-        
-        passenger.setDocumentNumber(txtDocumentNumber.getText());
-        passenger.setEmail(txtEmail.getText());
-        passenger.setFamilyName(txtFamilyName.getText());
-        passenger.setGivenName(txtFirstName.getText());
-        passenger.setMiddleName(txtMiddleName.getText());
-        passenger.setPhone(txtPhone.getText());
-
-        Place place = (Place)comboPlaces.getModel().getSelectedItem();
-        
-        SearchClient.getInstance().buyTicket(flight, place, passenger, txtAddInfo.getText());
-        
-        dispose();
+        try {
+            Passenger passenger = new Passenger();
+            
+            passenger.setDocumentNumber(txtDocumentNumber.getText());
+            passenger.setEmail(txtEmail.getText());
+            passenger.setFamilyName(txtFamilyName.getText());
+            passenger.setGivenName(txtFirstName.getText());
+            passenger.setMiddleName(txtMiddleName.getText());
+            passenger.setPhone(txtPhone.getText());
+            
+            Place place = (Place)comboPlaces.getModel().getSelectedItem();
+            
+            SearchClient.getInstance().buyTicket(flight, place, passenger, txtAddInfo.getText());
+            
+            dispose();
+        } catch (ArgumentException_Exception ex) {
+            MessageManager.showErrorMessage(rootPane,  ex.getFaultInfo().getMessage(), "Ошибка");
+            Logger.getLogger(DialogBuy.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

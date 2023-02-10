@@ -28,6 +28,32 @@ public interface FlightWS {
 
     /**
      * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.mycompany.wsclient_flight.ws.Flight>
+     * @throws ArgumentException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlight")
+    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlightResponse")
+    @Action(input = "http://ws.flights.mycompany.com/FlightWS/searchFlightRequest", output = "http://ws.flights.mycompany.com/FlightWS/searchFlightResponse", fault = {
+        @FaultAction(className = ArgumentException_Exception.class, value = "http://ws.flights.mycompany.com/FlightWS/searchFlight/Fault/ArgumentException")
+    })
+    public List<Flight> searchFlight(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        City arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        City arg2)
+        throws ArgumentException_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns java.util.List<com.mycompany.wsclient_flight.ws.City>
      */
@@ -64,32 +90,6 @@ public interface FlightWS {
         Passenger arg2,
         @WebParam(name = "arg3", targetNamespace = "")
         String arg3)
-        throws ArgumentException_Exception
-    ;
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns java.util.List<com.mycompany.wsclient_flight.ws.Flight>
-     * @throws ArgumentException_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlight")
-    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://ws.flights.mycompany.com/", className = "com.mycompany.wsclient_flight.ws.SearchFlightResponse")
-    @Action(input = "http://ws.flights.mycompany.com/FlightWS/searchFlightRequest", output = "http://ws.flights.mycompany.com/FlightWS/searchFlightResponse", fault = {
-        @FaultAction(className = ArgumentException_Exception.class, value = "http://ws.flights.mycompany.com/FlightWS/searchFlight/Fault/ArgumentException")
-    })
-    public List<Flight> searchFlight(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        City arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        City arg2)
         throws ArgumentException_Exception
     ;
 

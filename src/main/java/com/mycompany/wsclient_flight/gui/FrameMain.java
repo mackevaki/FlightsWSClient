@@ -1,22 +1,28 @@
 package com.mycompany.wsclient_flight.gui;
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
+import com.mycompany.wsclient_flight.proxy.CustomProxySelector;
 import com.mycompany.wsclient_flight.ws.City;
 import com.mycompany.wsclient_flight.ws.Flight;
 import com.mycompany.wsclient_flight.client.SearchClient;
 import com.mycompany.wsclient_flight.models.BoxModel;
 import com.mycompany.wsclient_flight.models.FlightModel;
 import com.mycompany.wsclient_flight.object.ExtCity;
+import com.mycompany.wsclient_flight.utils.MessageManager;
 import java.awt.Image;
+import java.net.ProxySelector;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 public class FrameMain extends javax.swing.JFrame {
-    private final SearchClient searchClient = SearchClient.getInstance();
+    private final SearchClient searchClient;
     private ArrayList<ExtCity> cityList;
     private ArrayList<Flight> flightList = new ArrayList<>();
     private City cityFrom;
@@ -27,7 +33,11 @@ public class FrameMain extends javax.swing.JFrame {
      * Creates new form FrameMain
      */
     public FrameMain() {
-        initComponents();        
+//        ProxySelector.setDefault(new CustomProxySelector());
+
+        searchClient = SearchClient.getInstance();
+
+        initComponents();
         fillCities();
         dateFlight.setTimeZone(TimeZone.getTimeZone("GMT"));
         dateFlight.setDate(new Date()); // по-умолчанию будет выбираться сегодняшний день
@@ -256,15 +266,7 @@ public class FrameMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        cityFrom = (City) comboCityFrom.getSelectedItem();
-        cityTo = (City) comboCityTo.getSelectedItem();
-        dateFrom = dateFlight.getDate().getTime();
-                
         searchFlights();
-//        flightList.addAll(searchClient.searchFlight(dateFlight.getDate().getTime(), cityFrom, cityTo));
-//
-//        tableFlights.setModel(new FlightModel(flightList));
-//        ((FlightModel) tableFlights.getModel()).fireTableDataChanged();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCheckTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckTicketActionPerformed
@@ -296,6 +298,12 @@ public class FrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_comboCityToActionPerformed
 
     private void searchFlights() {
+        if (dateFlight.getDate() != null) {
+            dateFrom = dateFlight.getDate().getTime();
+        }else{
+            dateFrom = 0L;
+        }
+                
         showBusy(true);
         
         new SwingWorker<Void, Void>() {
@@ -316,11 +324,16 @@ public class FrameMain extends javax.swing.JFrame {
             @Override
             protected void done() {
                 showBusy(false);
-                if (flightList.isEmpty()) {
-                    JOptionPane.showMessageDialog(FrameMain.this,
-                            "Ничего не найдено",
-                            "Результаты поиска",
-                            JOptionPane.PLAIN_MESSAGE);
+                try {
+                    get();
+                    if (flightList.isEmpty()) {
+                        MessageManager.showInformMessage(rootPane, "Ничего не найдено", "Результаты поиска");
+                    }
+                } catch (InterruptedException ex){
+                    Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    MessageManager.showErrorMessage(rootPane, ex.getCause().getMessage(), "Ошибка");
+                    Logger.getLogger(FrameMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }.execute();

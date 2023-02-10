@@ -7,14 +7,10 @@ import com.mycompany.wsclient_flight.ws.Place;
 import com.mycompany.wsclient_flight.ws.Reservation;
 import com.mycompany.wsclient_flight.object.ExtCity;
 import com.mycompany.wsclient_flight.ws.ArgumentException_Exception;
-import com.mycompany.wsclient_flight.ws.CityEmptyException_Exception;
 import com.mycompany.wsclient_flight.ws.FlightWS;
 import com.mycompany.wsclient_flight.ws.FlightWS_Service;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SearchClient {
     private static SearchClient searchClient;
@@ -28,7 +24,6 @@ public class SearchClient {
         if (searchClient == null) {
             searchClient = new SearchClient();
         }
-
         return searchClient;
     }
     
@@ -54,31 +49,17 @@ public class SearchClient {
         return cityList;
     }
 
-    public ArrayList<Flight> searchFlight(long date, City cityFrom, City cityTo) {
+    public ArrayList<Flight> searchFlight(long date, City cityFrom, City cityTo) throws ArgumentException_Exception{
         ArrayList<Flight> flightList = new ArrayList<>();      
-        try {
-            flightList.addAll(searchWS.searchFlight(date, cityFrom, cityTo));
-        } catch (ArgumentException_Exception ex) {
-            Logger.getLogger(SearchClient.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        flightList.addAll(searchWS.searchFlight(date, cityFrom, cityTo));
         return flightList;
     }
 
-    public boolean buyTicket(Flight flight, Place place, Passenger passenger, String addInfo) {
-        try {
-            return searchWS.buyTicket(flight, place, passenger, addInfo);
-        } catch (ArgumentException_Exception ex) {
-            Logger.getLogger(SearchClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+    public boolean buyTicket(Flight flight, Place place, Passenger passenger, String addInfo) throws ArgumentException_Exception{
+        return searchWS.buyTicket(flight, place, passenger, addInfo);
     }
     
-    public Reservation checkReservationByCode(String code) {
-        try {
-            return searchWS.checkReservationByCode(code);
-        } catch (ArgumentException_Exception ex) {
-            Logger.getLogger(SearchClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+    public Reservation checkReservationByCode(String code) throws ArgumentException_Exception{
+        return searchWS.checkReservationByCode(code);
     }
 }

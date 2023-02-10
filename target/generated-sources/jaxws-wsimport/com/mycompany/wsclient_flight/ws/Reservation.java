@@ -18,13 +18,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="addInfo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="flight" type="{http://ws.flights.mycompany.com/}flight" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="flight" type="{http://ws.flights.mycompany.com/}flight" minOccurs="0"/>
  *         &lt;element name="passenger" type="{http://ws.flights.mycompany.com/}passenger" minOccurs="0"/>
  *         &lt;element name="place" type="{http://ws.flights.mycompany.com/}place" minOccurs="0"/>
+ *         &lt;element name="addInfo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="reserveDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,71 +35,39 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservation", propOrder = {
-    "addInfo",
-    "code",
-    "flight",
     "id",
+    "flight",
     "passenger",
     "place",
-    "reserveDateTime"
+    "addInfo",
+    "reserveDateTime",
+    "code"
 })
 public class Reservation {
 
-    protected String addInfo;
-    protected String code;
-    protected Flight flight;
     protected long id;
+    protected Flight flight;
     protected Passenger passenger;
     protected Place place;
+    protected String addInfo;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar reserveDateTime;
+    protected String code;
 
     /**
-     * Gets the value of the addInfo property.
+     * Gets the value of the id property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getAddInfo() {
-        return addInfo;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the addInfo property.
+     * Sets the value of the id property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setAddInfo(String value) {
-        this.addInfo = value;
-    }
-
-    /**
-     * Gets the value of the code property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets the value of the code property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
+    public void setId(long value) {
+        this.id = value;
     }
 
     /**
@@ -124,22 +92,6 @@ public class Reservation {
      */
     public void setFlight(Flight value) {
         this.flight = value;
-    }
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
     }
 
     /**
@@ -191,6 +143,30 @@ public class Reservation {
     }
 
     /**
+     * Gets the value of the addInfo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAddInfo() {
+        return addInfo;
+    }
+
+    /**
+     * Sets the value of the addInfo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAddInfo(String value) {
+        this.addInfo = value;
+    }
+
+    /**
      * Gets the value of the reserveDateTime property.
      * 
      * @return
@@ -212,6 +188,30 @@ public class Reservation {
      */
     public void setReserveDateTime(XMLGregorianCalendar value) {
         this.reserveDateTime = value;
+    }
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
     }
 
 }

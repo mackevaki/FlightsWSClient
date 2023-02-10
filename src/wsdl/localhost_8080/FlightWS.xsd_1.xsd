@@ -32,27 +32,27 @@
 
 <xs:complexType name="reservation">
 <xs:sequence>
-<xs:element name="addInfo" type="xs:string" minOccurs="0"/>
-<xs:element name="code" type="xs:string" minOccurs="0"/>
-<xs:element name="flight" type="tns:flight" minOccurs="0"/>
 <xs:element name="id" type="xs:long"/>
+<xs:element name="flight" type="tns:flight" minOccurs="0"/>
 <xs:element name="passenger" type="tns:passenger" minOccurs="0"/>
 <xs:element name="place" type="tns:place" minOccurs="0"/>
+<xs:element name="addInfo" type="xs:string" minOccurs="0"/>
 <xs:element name="reserveDateTime" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="flight">
 <xs:sequence>
-<xs:element name="aircraft" type="tns:aircraft" minOccurs="0"/>
-<xs:element name="cityFrom" type="tns:city" minOccurs="0"/>
-<xs:element name="cityTo" type="tns:city" minOccurs="0"/>
-<xs:element name="code" type="xs:string" minOccurs="0"/>
-<xs:element name="dateCome" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="dateDepart" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="duration" type="xs:string" minOccurs="0"/>
 <xs:element name="existFreePlaces" type="xs:boolean"/>
 <xs:element name="id" type="xs:long"/>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
+<xs:element name="dateDepart" type="xs:dateTime"/>
+<xs:element name="dateCome" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="aircraft" type="tns:aircraft" minOccurs="0"/>
+<xs:element name="cityFrom" type="tns:city"/>
+<xs:element name="cityTo" type="tns:city"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -77,11 +77,11 @@
 
 <xs:complexType name="place">
 <xs:sequence>
-<xs:element name="busy" type="xs:boolean"/>
-<xs:element name="flightClass" type="tns:flightClass" minOccurs="0"/>
 <xs:element name="id" type="xs:long"/>
-<xs:element name="seatLetter" type="xs:string" minOccurs="0"/>
+<xs:element name="seatLetter" type="xs:string"/>
 <xs:element name="seatNumber" type="xs:int"/>
+<xs:element name="flightClass" type="tns:flightClass"/>
+<xs:element name="busy" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -95,11 +95,11 @@
 
 <xs:complexType name="city">
 <xs:sequence>
-<xs:element name="code" type="xs:string" minOccurs="0"/>
-<xs:element name="country" type="tns:country" minOccurs="0"/>
-<xs:element name="desc" type="xs:string" minOccurs="0"/>
 <xs:element name="id" type="xs:long"/>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+<xs:element name="country" type="tns:country" minOccurs="0"/>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -115,19 +115,26 @@
 
 <xs:complexType name="passenger">
 <xs:sequence>
-<xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="familyName" type="xs:string" minOccurs="0"/>
-<xs:element name="givenName" type="xs:string" minOccurs="0"/>
 <xs:element name="id" type="xs:long"/>
+<xs:element name="givenName" type="xs:string"/>
 <xs:element name="middleName" type="xs:string" minOccurs="0"/>
+<xs:element name="familyName" type="xs:string"/>
+<xs:element name="documentNumber" type="xs:string"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
 <xs:element name="phone" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="ArgumentException">
 <xs:sequence>
+<xs:element name="exceptionInfo" type="tns:exceptionInfo" minOccurs="0"/>
 <xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="exceptionInfo">
+<xs:sequence>
+<xs:element name="trace" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

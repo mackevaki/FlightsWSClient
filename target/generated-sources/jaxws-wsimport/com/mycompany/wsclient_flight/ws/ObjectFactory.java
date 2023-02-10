@@ -186,6 +186,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExceptionInfo }
+     * 
+     */
+    public ExceptionInfo createExceptionInfo() {
+        return new ExceptionInfo();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllCitiesResponse }{@code >}}
      * 
      */

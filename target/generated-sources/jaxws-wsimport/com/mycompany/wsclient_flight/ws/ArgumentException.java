@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="exceptionInfo" type="{http://ws.flights.mycompany.com/}exceptionInfo" minOccurs="0"/>
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -27,11 +28,37 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArgumentException", propOrder = {
+    "exceptionInfo",
     "message"
 })
 public class ArgumentException {
 
+    protected ExceptionInfo exceptionInfo;
     protected String message;
+
+    /**
+     * Gets the value of the exceptionInfo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ExceptionInfo }
+     *     
+     */
+    public ExceptionInfo getExceptionInfo() {
+        return exceptionInfo;
+    }
+
+    /**
+     * Sets the value of the exceptionInfo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ExceptionInfo }
+     *     
+     */
+    public void setExceptionInfo(ExceptionInfo value) {
+        this.exceptionInfo = value;
+    }
 
     /**
      * Gets the value of the message property.

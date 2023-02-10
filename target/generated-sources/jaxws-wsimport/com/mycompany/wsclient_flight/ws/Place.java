@@ -3,6 +3,7 @@ package com.mycompany.wsclient_flight.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -16,11 +17,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="busy" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="flightClass" type="{http://ws.flights.mycompany.com/}flightClass" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="seatLetter" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="seatLetter" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="seatNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="flightClass" type="{http://ws.flights.mycompany.com/}flightClass"/>
+ *         &lt;element name="busy" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,59 +32,21 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "place", propOrder = {
-    "busy",
-    "flightClass",
     "id",
     "seatLetter",
-    "seatNumber"
+    "seatNumber",
+    "flightClass",
+    "busy"
 })
 public class Place {
 
-    protected boolean busy;
-    protected FlightClass flightClass;
     protected long id;
+    @XmlElement(required = true)
     protected String seatLetter;
     protected int seatNumber;
-
-    /**
-     * Gets the value of the busy property.
-     * 
-     */
-    public boolean isBusy() {
-        return busy;
-    }
-
-    /**
-     * Sets the value of the busy property.
-     * 
-     */
-    public void setBusy(boolean value) {
-        this.busy = value;
-    }
-
-    /**
-     * Gets the value of the flightClass property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlightClass }
-     *     
-     */
-    public FlightClass getFlightClass() {
-        return flightClass;
-    }
-
-    /**
-     * Sets the value of the flightClass property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlightClass }
-     *     
-     */
-    public void setFlightClass(FlightClass value) {
-        this.flightClass = value;
-    }
+    @XmlElement(required = true)
+    protected FlightClass flightClass;
+    protected boolean busy;
 
     /**
      * Gets the value of the id property.
@@ -139,6 +102,46 @@ public class Place {
      */
     public void setSeatNumber(int value) {
         this.seatNumber = value;
+    }
+
+    /**
+     * Gets the value of the flightClass property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlightClass }
+     *     
+     */
+    public FlightClass getFlightClass() {
+        return flightClass;
+    }
+
+    /**
+     * Sets the value of the flightClass property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlightClass }
+     *     
+     */
+    public void setFlightClass(FlightClass value) {
+        this.flightClass = value;
+    }
+
+    /**
+     * Gets the value of the busy property.
+     * 
+     */
+    public boolean isBusy() {
+        return busy;
+    }
+
+    /**
+     * Sets the value of the busy property.
+     * 
+     */
+    public void setBusy(boolean value) {
+        this.busy = value;
     }
 
 }

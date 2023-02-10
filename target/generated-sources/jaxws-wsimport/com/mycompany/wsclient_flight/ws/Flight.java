@@ -3,6 +3,7 @@ package com.mycompany.wsclient_flight.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -18,15 +19,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="aircraft" type="{http://ws.flights.mycompany.com/}aircraft" minOccurs="0"/>
- *         &lt;element name="cityFrom" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
- *         &lt;element name="cityTo" type="{http://ws.flights.mycompany.com/}city" minOccurs="0"/>
- *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="dateCome" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="dateDepart" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="existFreePlaces" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="dateDepart" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element name="dateCome" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="aircraft" type="{http://ws.flights.mycompany.com/}aircraft" minOccurs="0"/>
+ *         &lt;element name="cityFrom" type="{http://ws.flights.mycompany.com/}city"/>
+ *         &lt;element name="cityTo" type="{http://ws.flights.mycompany.com/}city"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,29 +38,160 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "flight", propOrder = {
-    "aircraft",
-    "cityFrom",
-    "cityTo",
-    "code",
-    "dateCome",
-    "dateDepart",
     "duration",
     "existFreePlaces",
-    "id"
+    "id",
+    "code",
+    "dateDepart",
+    "dateCome",
+    "aircraft",
+    "cityFrom",
+    "cityTo"
 })
 public class Flight {
 
-    protected Aircraft aircraft;
-    protected City cityFrom;
-    protected City cityTo;
-    protected String code;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateCome;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateDepart;
     protected String duration;
     protected boolean existFreePlaces;
     protected long id;
+    protected String code;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateDepart;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateCome;
+    protected Aircraft aircraft;
+    @XmlElement(required = true)
+    protected City cityFrom;
+    @XmlElement(required = true)
+    protected City cityTo;
+
+    /**
+     * Gets the value of the duration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDuration() {
+        return duration;
+    }
+
+    /**
+     * Sets the value of the duration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDuration(String value) {
+        this.duration = value;
+    }
+
+    /**
+     * Gets the value of the existFreePlaces property.
+     * 
+     */
+    public boolean isExistFreePlaces() {
+        return existFreePlaces;
+    }
+
+    /**
+     * Sets the value of the existFreePlaces property.
+     * 
+     */
+    public void setExistFreePlaces(boolean value) {
+        this.existFreePlaces = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     */
+    public void setId(long value) {
+        this.id = value;
+    }
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    /**
+     * Gets the value of the dateDepart property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateDepart() {
+        return dateDepart;
+    }
+
+    /**
+     * Sets the value of the dateDepart property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateDepart(XMLGregorianCalendar value) {
+        this.dateDepart = value;
+    }
+
+    /**
+     * Gets the value of the dateCome property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateCome() {
+        return dateCome;
+    }
+
+    /**
+     * Sets the value of the dateCome property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateCome(XMLGregorianCalendar value) {
+        this.dateCome = value;
+    }
 
     /**
      * Gets the value of the aircraft property.
@@ -131,134 +263,6 @@ public class Flight {
      */
     public void setCityTo(City value) {
         this.cityTo = value;
-    }
-
-    /**
-     * Gets the value of the code property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets the value of the code property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    /**
-     * Gets the value of the dateCome property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateCome() {
-        return dateCome;
-    }
-
-    /**
-     * Sets the value of the dateCome property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateCome(XMLGregorianCalendar value) {
-        this.dateCome = value;
-    }
-
-    /**
-     * Gets the value of the dateDepart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateDepart() {
-        return dateDepart;
-    }
-
-    /**
-     * Sets the value of the dateDepart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateDepart(XMLGregorianCalendar value) {
-        this.dateDepart = value;
-    }
-
-    /**
-     * Gets the value of the duration property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDuration() {
-        return duration;
-    }
-
-    /**
-     * Sets the value of the duration property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDuration(String value) {
-        this.duration = value;
-    }
-
-    /**
-     * Gets the value of the existFreePlaces property.
-     * 
-     */
-    public boolean isExistFreePlaces() {
-        return existFreePlaces;
-    }
-
-    /**
-     * Sets the value of the existFreePlaces property.
-     * 
-     */
-    public void setExistFreePlaces(boolean value) {
-        this.existFreePlaces = value;
-    }
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
     }
 
 }
