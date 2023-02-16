@@ -6,11 +6,16 @@ import com.mycompany.wsclient_flight.ws.Passenger;
 import com.mycompany.wsclient_flight.ws.Place;
 import com.mycompany.wsclient_flight.ws.Reservation;
 import com.mycompany.wsclient_flight.object.ExtCity;
+import com.mycompany.wsclient_flight.rs.client.FlightsRS;
+import com.mycompany.wsclient_flight.rs.objects.CityList;
 import com.mycompany.wsclient_flight.ws.ArgumentException_Exception;
 import com.mycompany.wsclient_flight.ws.FlightWS;
 import com.mycompany.wsclient_flight.ws.FlightWS_Service;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class SearchClient {
     private static SearchClient searchClient;
@@ -18,6 +23,7 @@ public class SearchClient {
     private SearchClient() {
         searchService = new FlightWS_Service();
         searchWS = searchService.getFlightWSPort();
+        cityClient = new FlightsRS();
     }
     
     public static SearchClient getInstance() {
@@ -29,12 +35,14 @@ public class SearchClient {
     
     private final FlightWS_Service searchService;
     private final FlightWS searchWS;
-    
+    private FlightsRS cityClient;
     
     public ArrayList<ExtCity> getAllCities() {
+        Response response = cityClient.findAllCities();
+        List<City> list = response.readEntity(new GenericType<List<City>>(){});
         ArrayList<ExtCity> cityList = new ArrayList<>();
         
-        for (City city : searchWS.getAllCities()) {
+        for (City city : list) {
             ExtCity extCity = new ExtCity();
             extCity.setCode(city.getCode());
             extCity.setCountry(city.getCountry());

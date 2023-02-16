@@ -1,7 +1,7 @@
 
 package com.mycompany.wsclient_flight.ws;
 
-import javax.xml.ws.WebFault;
+import jakarta.xml.ws.WebFault;
 
 
 /**
